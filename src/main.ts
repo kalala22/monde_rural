@@ -19,7 +19,9 @@ import {
   faImage,
   faTasks,
   faArrowUpRightFromSquare,
-  faArrowUp,
+  faSquareArrowUpRight,
+  faArrowRight,
+  faLeaf,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -38,7 +40,9 @@ library.add(
   faImage,
   faTasks,
   faArrowUpRightFromSquare,
-  faArrowUp,
+  faSquareArrowUpRight,
+  faArrowRight,
+  faLeaf,
 )
 
 createApp(App).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
