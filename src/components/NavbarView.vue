@@ -30,7 +30,7 @@ const links = ref([
       </div>
       <div class="hidden md:flex items-center space-x-8">
         <div v-for="link in links" :key="link.name" :class="[]">
-          <a :href="link.href" class="font-roboto hover:text-vertrural text-sm">{{ link.name }}</a>
+          <a :href="link.href" class="font-roboto hover:text-vertrural text-lg">{{ link.name }}</a>
         </div>
       </div>
 
