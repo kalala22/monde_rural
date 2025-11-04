@@ -3,6 +3,7 @@
 import Navbar from '@/components/NavbarView.vue'
 import HomeView from '@/components/HomeView.vue'
 import SectionAxeView from './components/SectionAxeView.vue'
+import SloganSectionView from './components/SloganSectionView.vue'
 </script>
 
 <template>
@@ -10,5 +11,6 @@ import SectionAxeView from './components/SectionAxeView.vue'
     <Navbar />
     <HomeView />
     <SectionAxeView />
+    <SloganSectionView />
   </div>
 </template>
