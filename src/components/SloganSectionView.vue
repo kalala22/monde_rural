@@ -1,4 +1,6 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import BoutonAgament from './boutonAgament.vue'
+</script>
 <template>
   <section
     id="slogan-section"
@@ -8,7 +10,7 @@
     :visible="{ opacity: 1, y: 0 }"
   >
     <div
-      class="flex flex-col items-center justify-center bg-linear-to-r from-vertrural to-vertrural text-white absolute inset-0 opacity-85 h-full md:h-full"
+      class="flex flex-col items-center justify-center bg-linear-to-r from-vertrural to-blue-rural text-white absolute inset-0 opacity-95 h-full md:h-full"
     >
       <div
         class="max-w-4xl mx-auto px-4 text-center"
@@ -23,6 +25,9 @@
           Ensemble, bâtissons une nation forte, juste et inclusive où chaque voix compte et chaque
           action transforme des vies.
         </p>
+        <div class="flex flex-row md:flex-row gap-4 justify-center">
+          <bouton-agament />
+        </div>
       </div>
     </div>
   </section>
