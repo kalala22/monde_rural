@@ -12,10 +12,10 @@ import BoutonSeeMore from './boutonSeeMore.vue'
 
       <!-- Assurez-vous que votre contenu est au-dessus de la surcouche -->
       <div class="relative max-w-4xl mx-4 text-center">
-        <div class="inline-flex items-center gap-2 bg-vertrural/10 px-4 py-2 rounded-full mb-6">
+        <div class="inline-flex items-center gap-2 bg-vertrural/40 px-4 py-2 rounded-full mb-6">
           <!-- <Leaf class="h-5 w-5 text-vertrural" /> -->
-          <font-awesome-icon icon="leaf" class="h-5 w-5 text-vertrural" />
-          <span class="text-sm font-bold text-vertrural animate-pulse"
+          <font-awesome-icon icon="leaf" class="h-5 w-5 text-white" />
+          <span class="text-sm font-bold text-white animate-pulse"
             >Développement Équitable et Durable</span
           >
         </div>
