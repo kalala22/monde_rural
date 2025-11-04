@@ -28,6 +28,7 @@ import {
   faBookOpen,
   faGenderless,
   faTreeCity,
+  faHeart,
 } from '@fortawesome/free-solid-svg-icons'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -54,6 +55,7 @@ library.add(
   faTreeCity,
   faAppleAlt,
   faGenderless,
+  faHeart,
 )
 
 createApp(App).use(MotionPlugin).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
