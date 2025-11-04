@@ -18,18 +18,38 @@ import BoutonSeeMore from './boutonSeeMore.vue'
           <span class="text-sm font-bold text-vertrural">Développement Équitable et Durable</span>
         </div>
         <div>
-          <h1 class="font-roboto font-bold text-4xl md:text-6xl mb-8">
+          <h1
+            class="font-roboto font-bold text-4xl md:text-6xl mb-8 text-balance"
+            v-motion
+            :initial="{ opacity: 0, y: 100 }"
+            :visible="{ opacity: 1, y: 0 }"
+          >
             Souvenez-vous de ces mots puissants tirés de notre hymne national
           </h1>
         </div>
-        <blockquote class="text-xl md:text-2xl font-bold italic text-secondary mb-6">
+        <blockquote
+          class="text-xl md:text-2xl font-bold italic text-secondary mb-6"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :visible="{ opacity: 1, y: 0 }"
+        >
           « Nous peuplerons ton sol et nous assurerons ta grandeur. »
         </blockquote>
 
-        <p class="text-lg md:text-xl text-muted-foreground mb-10 text-balance">
+        <p
+          class="text-lg md:text-xl text-muted-foreground mb-10 text-balance"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :visible="{ opacity: 1, y: 0 }"
+        >
           Car la grandeur d'un pays se mesure à sa capacité à se développer de manière équitable.
         </p>
-        <div class="flex flex-col md:flex-row gap-4 justify-center">
+        <div
+          class="flex flex-col md:flex-row gap-4 justify-center"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :visible="{ opacity: 1, y: 0 }"
+        >
           <BoutonJoinUs />
           <BoutonSeeMore />
         </div>
