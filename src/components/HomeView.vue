@@ -5,7 +5,7 @@ import BoutonSeeMore from './boutonSeeMore.vue'
 <template>
   <main id="home">
     <div
-      class="relative flex items-center justify-center bg-no-repeat bg-cover bg-center bg-[url(src/assets/img/bgMondeRuralAgricol.png)] h-screen"
+      class="relative flex items-center justify-center bg-no-repeat bg-cover bg-center bg-[url(@/assets/img/bgMondeRuralAgricol.png)] h-screen"
     >
       <!-- Ajout de la surcouche avec opacité -->
       <div class="absolute inset-0 bg-black opacity-40"></div>

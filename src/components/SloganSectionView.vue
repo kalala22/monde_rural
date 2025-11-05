@@ -4,7 +4,7 @@ import BoutonAgament from './boutonAgament.vue'
 <template>
   <section
     id="slogan-section"
-    class="relative flex items-center justify-center bg-no-repeat bg-cover bg-center bg-[url(src/assets/img/fondplusunpassansleruraux.png)] h-80 md:h-80 lg:h-96 mt-35"
+    class="relative flex items-center justify-center bg-no-repeat bg-cover bg-center bg-[url(@/assets/img/fondplusunpassansleruraux.png)] h-80 md:h-80 lg:h-96 mt-35"
     v-motion
     :initial="{ opacity: 0, y: 100 }"
     :visible="{ opacity: 1, y: 0 }"
