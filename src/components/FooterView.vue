@@ -104,7 +104,7 @@
                 />
               </a>
               <a
-                href="#"
+                href="https://www.instagram.com/lemonderuralasbl/?utm_source=qr&igsh=bHE4ZGw3MHZvNjJw#"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="bg-white/10 p-2 rounded-full hover:bg-accent transition-colors"
