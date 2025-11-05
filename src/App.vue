@@ -5,6 +5,7 @@ import HomeView from '@/components/HomeView.vue'
 import SectionAxeView from './components/SectionAxeView.vue'
 import SloganSectionView from './components/SloganSectionView.vue'
 import SectionCallToActionView from './components/SectionCallToActionView.vue'
+import FooterView from './components/FooterView.vue'
 </script>
 
 <template>
@@ -14,5 +15,6 @@ import SectionCallToActionView from './components/SectionCallToActionView.vue'
     <SectionAxeView />
     <SloganSectionView />
     <SectionCallToActionView />
+    <FooterView />
   </div>
 </template>
