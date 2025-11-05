@@ -30,7 +30,7 @@ import {
   faTreeCity,
   faHeart,
 } from '@fortawesome/free-solid-svg-icons'
-import { faGithub } from '@fortawesome/free-brands-svg-icons'
+import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
   faX,
@@ -56,6 +56,7 @@ library.add(
   faAppleAlt,
   faGenderless,
   faHeart,
+  faFacebook,
 )
 
 createApp(App).use(MotionPlugin).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
