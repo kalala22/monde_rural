@@ -19,7 +19,12 @@ const links = ref([
 
 <template>
   <header class="sticky top-0 z-50 bg-white shadow-md py-2">
-    <nav class="flex items-center justify-between px-6 md:max-w-7xl md:mx-auto md:text-center">
+    <nav
+      class="flex items-center justify-between px-6 md:max-w-7xl md:mx-auto md:text-center"
+      v-motion
+      :initial="{ opacity: 0, y: 100 }"
+      :visible="{ opacity: 1, y: 0 }"
+    >
       <div class="flex items-center">
         <div class="w-20">
           <a href="#"><img :src="logo" class="" alt="Logo du monde rural" /></a>
