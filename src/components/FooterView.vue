@@ -67,7 +67,7 @@
               </li>
               <li class="flex items-start gap-2 text-sm text-white/80">
                 <!-- <Phone class="h-4 w-4 mt-0.5 flex-shrink-0" /> -->
-                <span>+243 XXX XXX XXX</span>
+                <a href="tel:+243819800448">+243 819 800 448</a>
               </li>
               <li class="flex items-start gap-2 text-sm text-white/80">
                 <!-- <MapPin class="h-4 w-4 mt-0.5 flex-shrink-0" /> -->
