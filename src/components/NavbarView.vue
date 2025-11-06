@@ -9,11 +9,11 @@ const toggleMenu = () => {
 }
 
 const links = ref([
-  { name: 'Accueil', href: '#' },
-  { name: 'A propos', href: '#' },
-  { name: 'Actualités', href: '#' },
-  { name: 'Rejoignez-nous', href: '#' },
-  { name: 'Contact', href: '#' },
+  { name: 'Accueil', href: '/' },
+  { name: 'A propos', href: '/about' },
+  { name: 'Actualités', href: '/news' },
+  { name: 'Rejoignez-nous', href: '/join' },
+  { name: 'Contact', href: '/contact' },
 ])
 </script>
 
@@ -35,7 +35,9 @@ const links = ref([
       </div>
       <div class="hidden md:flex items-center space-x-8">
         <div v-for="link in links" :key="link.name" :class="[]">
-          <a :href="link.href" class="font-roboto hover:text-vertrural text-lg">{{ link.name }}</a>
+          <router-link :to="link.href" class="font-roboto hover:text-vertrural text-lg">{{
+            link.name
+          }}</router-link>
         </div>
       </div>
 
