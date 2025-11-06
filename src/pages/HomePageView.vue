@@ -1,0 +1,17 @@
+<script setup lang="ts">
+// import Navbar from '@/components/NavbarView.vue'
+import HomeView from '@/components/HomeView.vue'
+import SectionAxeView from '@/components/SectionAxeView.vue'
+import SloganSectionView from '@/components/SloganSectionView.vue'
+import SectionCallToActionView from '@/components/SectionCallToActionView.vue'
+// import FooterView from '@/components/FooterView.vue'
+</script>
+
+<template>
+  <div>
+    <HomeView />
+    <SectionAxeView />
+    <SloganSectionView />
+    <SectionCallToActionView />
+  </div>
+</template>
