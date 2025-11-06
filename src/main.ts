@@ -29,6 +29,8 @@ import {
   faGenderless,
   faTreeCity,
   faHeart,
+  faBullseye,
+  faEye,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -57,6 +59,13 @@ library.add(
   faGenderless,
   faHeart,
   faFacebook,
+  faBullseye,
+  faEye,
 )
+import router from '@/router'
 
-createApp(App).use(MotionPlugin).component('font-awesome-icon', FontAwesomeIcon).mount('#app')
+createApp(App)
+  .use(MotionPlugin)
+  .component('font-awesome-icon', FontAwesomeIcon)
+  .use(router)
+  .mount('#app')
