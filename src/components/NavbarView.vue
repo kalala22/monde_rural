@@ -87,5 +87,22 @@ const links = ref([
         </div>
       </div>
     </nav>
+
+    <div
+      v-if="isMenuOpen"
+      class="md:hidden bg-white fixed top-16 left-0 w-full h-[calc(100%-40px)] flex flex-col items-center justify-center gap-5"
+    >
+      <div v-for="link in links" :key="link.name" class="text-3xl font-bold">
+        <!-- Cliquer sur un lien ferme aussi le menu -->
+        <!-- <div class="absolute top-4 right-4">
+            <button @click="toggleMenu" class="text-primary focus:outline-none">
+              <font-awesome-icon icon="x" />
+            </button>
+          </div> -->
+        <router-link :to="link.href" class="text-3xl font-bold" @click="toggleMenu">
+          {{ link.name }}
+        </router-link>
+      </div>
+    </div>
   </header>
 </template>
