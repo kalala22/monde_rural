@@ -46,6 +46,87 @@ const ListValeurs: Ref<{ title: string; description: string; icon?: string; colo
       color: 'text-yellow-rural',
     },
   ])
+
+const ListMoyensAction: Ref<
+  { title: string; description: string; icon?: string; color?: string }[]
+> = ref([
+  {
+    title: 'Études et Recherches',
+    description: 'Analyses approfondies des besoins ruraux',
+    icon: 'book-open',
+    color: '',
+  },
+  {
+    title: 'Formations',
+    description: 'Renforcement des capacités locales',
+    icon: 'users',
+    color: '',
+  },
+  {
+    title: 'Forums et Conférences',
+    description: "Espaces d'échange et de partage",
+    icon: 'network-wired',
+    color: '',
+  },
+  {
+    title: 'Coaching',
+    description: 'Accompagnement personnalisé des acteurs',
+    icon: 'bullseye',
+    color: '',
+  },
+])
+
+const ListAppuiFinancier: Ref<
+  { title: string; description: string; icon?: string; color?: string }[]
+> = ref([
+  {
+    title: 'Dons',
+    description: 'Soutien financier direct aux projets communautaires',
+    icon: 'hand-holding-usd',
+    color: '',
+  },
+  {
+    title: 'Subventions',
+    description: 'Financement de programmes de développement',
+    icon: 'donate',
+    color: '',
+  },
+  {
+    title: 'Levées de Fonds',
+    description: 'Mobilisation de ressources pour les initiatives rurales',
+    icon: 'handshake',
+    color: '',
+  },
+])
+
+const ListActivitesPlaidoyer: Ref<
+  { title: string; description: string; icon?: string; color?: string }[]
+> = ref([
+  {
+    title: 'Communications',
+    description: "Diffusion d'informations et sensibilisation",
+    icon: 'bullhorn',
+    color: '',
+  },
+  {
+    title: 'Campagnes de Sensibilisation',
+    description: 'Mobilisation autour des enjeux ruraux',
+    icon: 'network-wired',
+    color: '',
+  },
+  {
+    title: 'Plaidoyers Thématiques',
+    description: 'Défense des intérêts des communautés rurales',
+    icon: 'bullseye',
+    color: '',
+  },
+  {
+    title: 'Mise en Réseau',
+    description: 'Création de synergies entre acteurs',
+    icon: 'users',
+    color: '',
+  },
+])
 </script>
 
 <template>
@@ -66,6 +147,7 @@ const ListValeurs: Ref<{ title: string; description: string; icon?: string; colo
         </div>
       </div>
     </section>
+    <!-- // Mission & Vision Section -->
     <section class="py-16 bg-background">
       <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
@@ -90,11 +172,13 @@ const ListValeurs: Ref<{ title: string; description: string; icon?: string; colo
         </div>
       </div>
     </section>
-
-    <section class="py-16 bg-accent/5">
+    <!-- // Valeurs Section -->
+    <section class="py-16 bg-vertrural/5">
       <div class="container mx-auto px-4">
         <div class="text-center mb-12">
-          <h2 class="font-black mb-4 text-3xl md:text-4xl text-primary font-roboto">Nos Valeurs</h2>
+          <h2 class="font-black mb-4 text-3xl md:text-4xl text-vertrural font-roboto">
+            Nos Valeurs
+          </h2>
           <p class="text-lg text-muted-foreground text-balance max-w-2xl mx-auto font-roboto">
             Les principes qui guident notre action au quotidien
           </p>
@@ -121,5 +205,120 @@ const ListValeurs: Ref<{ title: string; description: string; icon?: string; colo
         </div>
       </div>
     </section>
+    <!-- // Moyens d'Action Section -->
+    <section class="py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+          <h2 class="font-black text-3xl md:text-4xl mb-4 text-vertrural font-roboto">
+            Nos Moyens d'Action
+          </h2>
+        </div>
+        <div class="max-w-6xl mx-auto space-y-12">
+          <div class="">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="text-vertrural text-3xl">
+                <font-awesome-icon icon="book-open" />
+              </div>
+              <h3 class="text-2xl font-bold text-vertrural font-roboto">Appui Technique</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div
+                v-for="(moyen, index) in ListMoyensAction"
+                :key="index"
+                class="bg-white rounded-lg shadow-sm p-6 border-1 border-gray-300 hover:border-vertrural transition-shadow duration-300"
+                v-motion
+                :initial="{ opacity: 0, y: 100 }"
+                :visible="{ opacity: 1, y: 0 }"
+              >
+                <div class="pb-6">
+                  <div class="text-blue-rural mb-4 text-xl md:text-2xl">
+                    <font-awesome-icon :icon="moyen.icon" />
+                  </div>
+                  <h3 class="font-bold font-roboto mb-2">
+                    {{ moyen.title }}
+                  </h3>
+                  <p class="text-muted-foreground text-balance font-roboto">
+                    {{ moyen.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- // Appui Financier Section -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="text-blue-rural text-3xl">
+                <font-awesome-icon icon="dollar-sign" />
+              </div>
+              <h3 class="text-2xl font-bold text-blue-rural font-roboto">Appui Financier</h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div
+                v-for="(appuis, index) in ListAppuiFinancier"
+                :key="index"
+                class="bg-white rounded-lg shadow-sm p-6 border-1 border-gray-300 hover:border-blue-rural transition-shadow duration-300"
+                v-motion
+                :initial="{ opacity: 0, y: 100 }"
+                :visible="{ opacity: 1, y: 0 }"
+              >
+                <div class="pb-6">
+                  <div class="text-blue-rural mb-4 text-xl md:text-2xl">
+                    <font-awesome-icon :icon="appuis.icon" />
+                  </div>
+                  <h3 class="font-bold font-roboto mb-2">
+                    {{ appuis.title }}
+                  </h3>
+                  <p class="text-muted-foreground text-balance font-roboto">
+                    {{ appuis.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- // plaidoyer Financier Section -->
+          <div>
+            <div class="flex items-center gap-3 mb-6">
+              <div class="text-green-rural text-3xl">
+                <font-awesome-icon icon="dollar-sign" />
+              </div>
+              <h3 class="text-2xl font-bold text-green-rural font-roboto">
+                Activités de Plaidoyer
+              </h3>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div
+                v-for="(activites, index) in ListActivitesPlaidoyer"
+                :key="index"
+                class="bg-white rounded-lg shadow-sm p-6 border-1 border-gray-300 hover:border-green-rural transition-shadow duration-300"
+                v-motion
+                :initial="{ opacity: 0, y: 100 }"
+                :visible="{ opacity: 1, y: 0 }"
+              >
+                <div class="pb-6">
+                  <div class="text-green-rural mb-4 text-xl md:text-2xl">
+                    <font-awesome-icon :icon="activites.icon" />
+                  </div>
+                  <h3 class="font-bold font-roboto mb-2">
+                    {{ activites.title }}
+                  </h3>
+                  <p class="text-muted-foreground text-balance font-roboto">
+                    {{ activites.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 </template>
+<!-- <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSeZZcCMouwMJnnmdQ9Tz6cvrtUEPLmJTy7o5mG3TH8uev0izQ/viewform?embedded=true"
+          width="700"
+          height="520"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          >Chargement…</iframe
+> -->
