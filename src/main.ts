@@ -34,6 +34,10 @@ import {
   faScaleBalanced,
   faUsers,
   faAward,
+  faNetworkWired,
+  faMoneyBillTrendUp,
+  faDollarSign,
+  faBullhorn,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -67,6 +71,11 @@ library.add(
   faScaleBalanced,
   faUsers,
   faAward,
+  faBookOpen,
+  faNetworkWired,
+  faMoneyBillTrendUp,
+  faDollarSign,
+  faBullhorn,
 )
 import router from '@/router'
 
