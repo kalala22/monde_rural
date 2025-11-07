@@ -84,7 +84,7 @@
               >
                 <img
                   width="20"
-                  height="20"
+                  height="50"
                   src="https://img.icons8.com/ios-filled/50/facebook-new.png"
                   alt="facebook-new"
                 />
@@ -128,5 +128,5 @@
   </footer>
 </template>
 <script setup lang="ts">
-import logo from '@/assets/img/Logo/logoMonde.png'
+import logo from '@/assets/img/Logo/logoMonde_white.png'
 </script>
