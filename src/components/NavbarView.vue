@@ -12,7 +12,7 @@ const links = ref([
   { name: 'Accueil', href: '/' },
   { name: 'A propos', href: '/about' },
   { name: 'Actualités', href: '/news' },
-  { name: 'Rejoignez-nous', href: '/join' },
+  { name: 'Rejoignez-nous', href: '/join-us' },
   { name: 'Contact', href: '/contact' },
 ])
 </script>
