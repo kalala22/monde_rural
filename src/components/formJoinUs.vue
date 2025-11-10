@@ -1,4 +1,56 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+import { ref } from 'vue'
+
+const form = ref({
+  nom: '',
+  postnom: '',
+  prenom: '',
+  email: '',
+  membershipType: '',
+  message: '',
+})
+
+const isLoading = ref(false)
+const error = ref(false)
+const success = ref(false)
+
+const submitForm = async () => {
+  isLoading.value = true
+  error.value = false
+  success.value = false
+
+  try {
+    const response = await fetch('http://localhost:3000/api/send-form', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(form.value),
+    })
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+    if (response.status === 201) {
+      success.value = true
+      form.value = {
+        nom: '',
+        postnom: '',
+        prenom: '',
+        email: '',
+        membershipType: '',
+        message: '',
+      }
+    } else {
+      throw new Error('Form submission failed')
+    }
+  } catch (e) {
+    error.value = true
+    console.error('Form submission error:', e)
+  } finally {
+    isLoading.value = false
+  }
+}
+</script>
 <template>
   <div class="container mx-auto px-4">
     <div class="max-w-2xl mx-auto">
@@ -30,38 +82,44 @@
             <strong class="font-bold">Erreur !</strong>
             <span class="block sm:inline"> Une erreur est survenue. Veuillez réessayer.</span>
           </div> -->
-          <form class="space-y-6">
+          <form @submit.prevent="submitForm" class="space-y-6">
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 font-roboto"
+              <label for="nom" class="block text-sm font-medium text-gray-700 font-roboto"
                 >Nom</label
               >
               <input
                 type="text"
-                id="name"
+                id="nom"
+                v-model="form.nom"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
                 placeholder="Ex: John"
+                required
               />
             </div>
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 font-roboto"
+              <label for="Postnom" class="block text-sm font-medium text-gray-700 font-roboto"
                 >Postnom</label
               >
               <input
                 type="text"
-                id="name"
+                id="Postnom"
+                v-model="form.postnom"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
                 placeholder="Ex: Doe"
+                required
               />
             </div>
             <div>
-              <label for="name" class="block text-sm font-medium text-gray-700 font-roboto"
+              <label for="Prenom" class="block text-sm font-medium text-gray-700 font-roboto"
                 >Prenom</label
               >
               <input
                 type="text"
-                id="name"
+                id="Prenom"
+                v-model="form.prenom"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
                 placeholder="Ex: Jane"
+                required
               />
             </div>
             <div>
@@ -71,8 +129,10 @@
               <input
                 type="email"
                 id="email"
+                v-model="form.email"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
                 placeholder="Votre adresse email"
+                required
               />
             </div>
             <div>
@@ -83,12 +143,14 @@
               >
               <select
                 id="membershipType"
+                v-model="form.membershipType"
+                required
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
               >
                 <option value="" disabled selected>Choisissez un type</option>
-                <option value="individual">Membre</option>
-                <option value="corporate">Bénévole</option>
-                <option value="student">Partenaire</option>
+                <option value="membre">Membre</option>
+                <option value="bénévole">Bénévole</option>
+                <option value="partenaire">Partenaire</option>
               </select>
             </div>
             <div>
@@ -97,6 +159,7 @@
               >
               <textarea
                 id="message"
+                v-model="form.message"
                 rows="4"
                 class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
                 placeholder="Votre message"
