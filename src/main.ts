@@ -38,6 +38,8 @@ import {
   faMoneyBillTrendUp,
   faDollarSign,
   faBullhorn,
+  faCheckCircle,
+  faHandshake,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -76,6 +78,8 @@ library.add(
   faMoneyBillTrendUp,
   faDollarSign,
   faBullhorn,
+  faCheckCircle,
+  faHandshake,
 )
 import router from '@/router'
 
