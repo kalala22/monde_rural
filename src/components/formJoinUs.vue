@@ -11,13 +11,14 @@ const form = ref({
 })
 
 const isLoading = ref(false)
-const error = ref(false)
-const success = ref(false)
+// Remplacer les booléens par des chaînes de caractères (ou null)
+const successMessage = ref('')
+const errorMessage = ref('')
 
 const submitForm = async () => {
   isLoading.value = true
-  error.value = false
-  success.value = false
+  successMessage.value = ''
+  errorMessage.value = ''
 
   try {
     const response = await fetch('http://localhost:3000/api/send-form', {
@@ -27,24 +28,37 @@ const submitForm = async () => {
       },
       body: JSON.stringify(form.value),
     })
+
+    // ÉTAPE CLÉ : Lire le corps de la réponse JSON, que ce soit un succès ou une erreur
+    const responseData = await response.json()
+
+    // Si la requête a échoué (status 4xx ou 5xx)
     if (!response.ok) {
-      throw new Error('Network response was not ok')
+      // L'erreur vient du serveur, on utilise son message
+      // responseData.message correspond à ce que vous envoyez depuis Express
+      // Ex: "Cette adresse email est déjà utilisée."
+      errorMessage.value = responseData.message || 'Une erreur inconnue est survenue.'
+      throw new Error(responseData.message || 'Server error')
     }
-    if (response.status === 201) {
-      success.value = true
-      form.value = {
-        nom: '',
-        postnom: '',
-        prenom: '',
-        email: '',
-        membershipType: '',
-        message: '',
-      }
-    } else {
-      throw new Error('Form submission failed')
+
+    // Si la requête a réussi (status 201)
+    successMessage.value = responseData.message // Ex: "Formulaire envoyé avec succès !"
+    // Vider le formulaire
+    form.value = {
+      nom: '',
+      postnom: '',
+      prenom: '',
+      email: '',
+      membershipType: '',
+      message: '',
     }
   } catch (e) {
-    error.value = true
+    // Cette partie 'catch' n'attrapera que les erreurs réseau
+    // (serveur injoignable, pas de connexion internet, etc.)
+    // Si errorMessage n'a pas déjà été défini par la réponse du serveur
+    if (!errorMessage.value) {
+      errorMessage.value = 'Impossible de joindre le serveur. Veuillez vérifier votre connexion.'
+    }
     console.error('Form submission error:', e)
   } finally {
     isLoading.value = false
@@ -64,24 +78,26 @@ const submitForm = async () => {
               Remplissez ce formulaire pour nous rejoindre
             </p>
           </div>
-          <!-- <div
-            v-if="success"
+          <div
+            v-if="successMessage"
             class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6 text-left"
             role="alert"
           >
-            <strong class="font-bold">Message envoyé !</strong>
-            <span class="block sm:inline"> Merci, je vous répondrai dès que possible.</span>
-          </div> -->
+            <strong class="font-bold">Succès !</strong>
+            <!-- On affiche directement le message reçu du serveur -->
+            <span class="block sm:inline"> {{ successMessage }}</span>
+          </div>
 
-          <!-- Message d'Erreur -->
-          <!-- <div
-            v-if="error"
+          <!-- Message d'Erreur DYNAMIQUE -->
+          <div
+            v-if="errorMessage"
             class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6 text-left"
             role="alert"
           >
             <strong class="font-bold">Erreur !</strong>
-            <span class="block sm:inline"> Une erreur est survenue. Veuillez réessayer.</span>
-          </div> -->
+            <!-- On affiche directement le message reçu du serveur -->
+            <span class="block sm:inline"> {{ errorMessage }}</span>
+          </div>
           <form @submit.prevent="submitForm" class="space-y-6">
             <div>
               <label for="nom" class="block text-sm font-medium text-gray-700 font-roboto"
@@ -165,12 +181,37 @@ const submitForm = async () => {
                 placeholder="Votre message"
               ></textarea>
             </div>
+            <!-- <div
+              v-if="successMessage"
+              class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded-lg relative mb-6 text-left"
+              role="alert"
+            >
+              <strong class="font-bold">Message envoyé !</strong>
+              <span class="block sm:inline"> Merci </span>
+            </div> -->
+
+            <!-- Message d'Erreur -->
+            <!-- <div
+              v-if="errorMessage"
+              class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6 text-left"
+              role="alert"
+            >
+              <strong class="font-bold">Erreur !</strong>
+              <span class="block sm:inline"> {{ errorMessage }}</span>
+            </div> -->
             <button
               type="submit"
               size="lg"
+              :disabled="isLoading"
               class="w-full bg-vertrural hover:bg-vertrural/90 text-vertrural-foreground font-bold text-lg rounded-lg px-4 py-3 transition-colors font-roboto hover:cursor-pointer text-white"
             >
-              Je m'engage
+              <span v-if="isLoading" class="">
+                <font-awesome-icon icon="circle-notch" class="animate-spin mr-2" />
+                Envoi en cours...
+              </span>
+
+              <!-- État normal -->
+              <span v-else class="flex items-center justify-center"> Je m'engage </span>
             </button>
           </form>
         </div>
