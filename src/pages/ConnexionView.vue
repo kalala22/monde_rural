@@ -19,6 +19,15 @@
           <!-- On affiche directement le message reçu du serveur -->
           <span class="block sm:inline"> {{ successMessage }}</span>
         </div>
+        <div
+          v-if="errorMessage"
+          class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-lg relative mb-6 text-left"
+          role="alert"
+        >
+          <strong class="font-bold">Erreur !</strong>
+          <!-- On affiche directement le message d'erreur reçu -->
+          <span class="block sm:inline"> {{ errorMessage }}</span>
+        </div>
         <div class="mb-4">
           <label for="nom" class="block text-gray-700 text-sm font-bold mb-2 text-left"
             >Votre Nom</label
@@ -101,6 +110,10 @@ const login = async () => {
     if (!response.ok) {
       errorMessage.value = responseData.message || 'Une erreur inconnue est survenue.'
       throw new Error(responseData.message || 'Server error')
+    }
+
+    if (responseData.token) {
+      localStorage.setItem('authToken', responseData.token) // Stockage dans le localStorage
     }
     successMessage.value = 'Connexion réussie !'
 
