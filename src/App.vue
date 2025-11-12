@@ -1,13 +1,20 @@
 <script setup lang="ts">
-// import HelloWorld from './components/HelloWorld.vue'
+import { useRoute } from 'vue-router'
 import Navbar from '@/components/NavbarView.vue'
 import FooterView from '@/components/FooterView.vue'
-// import AboutPageView from './pages/AboutPageView.vue'
+
+const route = useRoute()
 </script>
 
 <template>
-  <Navbar />
+  <!-- Affiche la Navbar si la route n'a pas meta.hideLayout -->
+  <Navbar v-if="!route.meta.hideLayout" />
+
   <RouterView />
-  <FooterView />
+
+  <!-- Affiche le FooterView si la route n'a pas meta.hideLayout -->
+  <FooterView v-if="!route.meta.hideLayout" />
+
   <div></div>
 </template>
+```
