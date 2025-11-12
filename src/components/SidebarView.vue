@@ -73,9 +73,8 @@
       </ul>
     </nav>
     <div class="mt-auto">
-      <a
-        href="#"
-        @click.prevent=""
+      <button
+        @click.prevent="logout"
         class="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition-colors duration-200"
       >
         <svg
@@ -93,17 +92,25 @@
           ></path>
         </svg>
         Déconnexion
-      </a>
+      </button>
     </div>
   </aside>
 </template>
 
 <script setup lang="ts">
 import logo from '@/assets/img/Logo/logoMonde_white.png'
-// Fonction de déconnexion
-// const logout = () => {
-//   localStorage.removeItem('isLoggedIn');
-//   // Recharge la page pour retourner à l'écran de connexion
-//   window.location.reload();
-// };
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+
+const logout = () => {
+  // 1. Supprimer le token du localStorage
+  localStorage.removeItem('authToken')
+
+  // 2. (Optionnel) Afficher un message à l'utilisateur
+  console.log('Vous avez été déconnecté.')
+
+  // 3. Rediriger l'utilisateur vers la page de connexion
+  router.push('/admin') // Assurez-vous que '/login' est la route de votre page de connexion
+}
 </script>
