@@ -13,11 +13,11 @@ const Admin = sequelize.define(
     nom: {
       type: DataTypes.STRING,
     },
-    email_address: {
+    password: {
+      // Correction ici : Utilisez DataTypes.STRING
       type: DataTypes.STRING,
-      unique: true,
+      // Il est aussi recommandé de ne pas autoriser les mots de passe nuls
       allowNull: false,
-      validate: { isEmail: true },
     },
   },
   {
