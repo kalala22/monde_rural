@@ -4,6 +4,7 @@ import { MotionPlugin } from '@vueuse/motion'
 import { createApp } from 'vue'
 
 import App from './App.vue'
+// import AdminApp from './AdminView.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
@@ -40,6 +41,7 @@ import {
   faBullhorn,
   faCheckCircle,
   faHandshake,
+  faCircleNotch,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -80,8 +82,15 @@ library.add(
   faBullhorn,
   faCheckCircle,
   faHandshake,
+  faCircleNotch,
 )
 import router from '@/router'
+
+// createApp(AdminApp)
+//   .use(router)
+//   .component('font-awesome-icon', FontAwesomeIcon)
+//   .use(MotionPlugin)
+//   .mount('#admin-app')
 
 createApp(App)
   .use(MotionPlugin)
