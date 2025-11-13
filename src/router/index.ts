@@ -4,6 +4,9 @@ import AboutPageView from '@/pages/AboutPageView.vue'
 import JoinUsPageView from '@/pages/JoinUsPageView.vue'
 import DashbordInterfaceView from '@/pages/DashbordInterfaceView.vue'
 import ConnexionView from '@/pages/ConnexionView.vue'
+import NewsPageView from '@/pages/NewsPageView.vue'
+import ContactPageView from '@/pages/ContactPageView.vue'
+
 const router = createRouter({
   routes: [
     {
@@ -15,8 +18,16 @@ const router = createRouter({
       component: AboutPageView,
     },
     {
+      path: '/news',
+      component: NewsPageView,
+    },
+    {
       path: '/join-us',
       component: JoinUsPageView,
+    },
+    {
+      path: '/contact',
+      component: ContactPageView,
     },
     {
       path: '/admin',
