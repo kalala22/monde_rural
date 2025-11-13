@@ -1,7 +1,9 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const dotenv = require('dotenv')
-dotenv.config()
-const express = require('express')
+import { config } from 'dotenv'
+import express from 'express'
+import formCreateRoute from './routes/form.create.route.js'
+import loginAdminRoute from './routes/login.admin.route.js'
+import getResourcesRoute from './routes/get.resources.route.js'
+config()
 const app = express()
 // const Users = require('./models/Users')
 app.use(express.json())
@@ -16,7 +18,8 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use('/api/', require('./routes/form.create.route'))
-app.use('/api/', require('./routes/login.admin.route'))
+app.use('/api/', formCreateRoute)
+app.use('/api/', loginAdminRoute)
+app.use('/api/', getResourcesRoute)
 
-module.exports = app
+export default app
