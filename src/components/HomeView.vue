@@ -32,6 +32,7 @@ import BoutonSeeMore from './boutonSeeMore.vue'
             :initial="{ opacity: 0, y: 100 }"
             :visible="{ opacity: 1, y: 0 }"
             :delay="300"
+            :duration="800"
           >
             Souvenez-vous de ces mots puissants tirés de notre hymne national
           </h1>
@@ -42,6 +43,7 @@ import BoutonSeeMore from './boutonSeeMore.vue'
           :initial="{ opacity: 0, y: 100 }"
           :visible="{ opacity: 1, y: 0 }"
           :delay="300"
+          :duration="800"
         >
           « Nous peuplerons ton sol et nous assurerons ta grandeur. »
         </blockquote>
@@ -52,6 +54,7 @@ import BoutonSeeMore from './boutonSeeMore.vue'
           :initial="{ opacity: 0, y: 100 }"
           :visible="{ opacity: 1, y: 0 }"
           :delay="1000"
+          :duration="800"
         >
           Car la grandeur d'un pays se mesure à sa capacité à se développer de manière équitable.
         </p>
@@ -61,6 +64,7 @@ import BoutonSeeMore from './boutonSeeMore.vue'
           :initial="{ opacity: 0, y: 100 }"
           :visible="{ opacity: 1, y: 0 }"
           :delay="200"
+          :duration="800"
         >
           <BoutonJoinUs />
           <BoutonSeeMore />
