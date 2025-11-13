@@ -8,6 +8,8 @@ import BoutonAgament from './boutonAgament.vue'
     v-motion
     :initial="{ opacity: 0, y: 100 }"
     :visible="{ opacity: 1, y: 0 }"
+    :delay="500"
+    :duration="400"
   >
     <div
       class="flex flex-col items-center justify-center bg-linear-to-r from-vertrural to-blue-rural text-white absolute inset-0 opacity-95 h-full md:h-full"
@@ -17,6 +19,8 @@ import BoutonAgament from './boutonAgament.vue'
         v-motion
         :initial="{ opacity: 0, y: 100 }"
         :visible="{ opacity: 1, y: 0 }"
+        :delay="500"
+        :duration="400"
       >
         <h2 class="font-black text-3xl md:text-6xl mb-6 text-balance font-roboto">
           PLUS UN PAS SANS LES RURAUX.
