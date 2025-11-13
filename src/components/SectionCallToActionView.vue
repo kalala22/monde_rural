@@ -26,7 +26,7 @@
             :duration="500"
           >
             <a
-              href="#"
+              href="#/join-us"
               class="bg-vertrural shadow-sm flex items-center justify-center transition duration-600 ease-in-out gap-1 font-bold text-lg px-6 py-3 rounded-lg hover:scale-105 text-white font-roboto"
             >
               Devenir membre
@@ -40,7 +40,7 @@
             :duration="500"
           >
             <a
-              href="#"
+              href="#/contact"
               class="shadow-sm flex items-center justify-center transition duration-600 ease-in-out gap-1 hover:bg-green-rural text-black hover:text-white font-bold text-lg px-6 py-3 rounded-lg font-roboto"
             >
               Nous contacter
