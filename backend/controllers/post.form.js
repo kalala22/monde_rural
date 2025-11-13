@@ -1,8 +1,7 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const Users = require('../models/Users')
-const { ValidationError } = require('sequelize')
+import Users from '../models/Users.js'
+import { ValidationError } from 'sequelize'
 
-async function postCreateForm(req, res) {
+export async function postCreateForm(req, res) {
   const idAdminParDefaut = process.env.DEFAULT_ADMIN_ID
 
   try {
@@ -47,5 +46,4 @@ async function postCreateForm(req, res) {
     })
   }
 }
-
-module.exports = { postCreateForm }
+// No default export; using named export "postCreateForm"
