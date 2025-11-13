@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const { DataTypes } = require('sequelize')
-const sequelize = require('../config/database_connection')
+import { DataTypes } from 'sequelize'
+import sequelize from '../config/database_connection.js'
 
 const Admin = sequelize.define(
   'Admin',
@@ -26,4 +25,4 @@ const Admin = sequelize.define(
   },
 )
 console.log(Admin === sequelize.models.Admin)
-module.exports = Admin
+export default Admin

@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const { DataTypes } = require('sequelize')
-const Admin = require('./Admin')
-const sequelize = require('../config/database_connection')
+import { DataTypes } from 'sequelize'
+import Admin from './Admin.js'
+import sequelize from '../config/database_connection.js'
 
 const Users = sequelize.define(
   'Users',
@@ -54,4 +53,4 @@ const Users = sequelize.define(
   },
 )
 console.log(Users === sequelize.models.Users)
-module.exports = Users
+export default Users
