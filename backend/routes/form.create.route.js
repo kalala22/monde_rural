@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const { Router } = require('express')
-const { body, validationResult } = require('express-validator')
-const { postCreateForm } = require('../controllers/post.form')
+import { Router } from 'express'
+import { body, validationResult } from 'express-validator'
+import { postCreateForm } from '../controllers/post.form.js'
 const router = Router()
 
 const validationRules = [
@@ -31,4 +30,4 @@ const handleValidationErrors = (req, res, next) => {
 }
 router.post('/send-form', validationRules, handleValidationErrors, postCreateForm)
 
-module.exports = router
+export default router
