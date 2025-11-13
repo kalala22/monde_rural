@@ -1,6 +1,6 @@
 <template>
   <!-- Le template reste identique à la version Tailwind CSS précédente -->
-  <aside class="w-64 bg-green-800 text-white flex flex-col min-h-screen p-4">
+  <aside class="w-64 bg-vertrural text-white flex flex-col min-h-screen p-4 font-roboto">
     <div class="flex items-center mb-8">
       <img :src="logo" alt="Logo" class="h-8 w-8 mr-2" />
       <span class="text-xl font-semibold">LE MONDE RURAL</span>
@@ -8,7 +8,9 @@
     <nav class="flex-1">
       <ul>
         <li>
-          <a href="#" class="flex items-center px-3 py-2 rounded-md bg-green-900 font-bold">
+          <span
+            class="flex items-center px-3 py-2 rounded-md bg-green-rural font-bold hover:cursor-pointer"
+          >
             <svg
               class="w-6 h-6 mr-3"
               fill="none"
@@ -24,12 +26,11 @@
               ></path>
             </svg>
             Tableau de bord
-          </a>
+          </span>
         </li>
         <li class="mt-2">
-          <a
-            href="#"
-            class="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition-colors duration-200"
+          <span
+            class="flex items-center px-3 py-2 rounded-md hover:bg-green-rural transition-colors duration-200 hover:cursor-pointer"
           >
             <svg
               class="w-6 h-6 mr-3"
@@ -46,12 +47,11 @@
               ></path>
             </svg>
             Liste des utilisateurs
-          </a>
+          </span>
         </li>
         <li class="mt-2">
-          <a
-            href="#"
-            class="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition-colors duration-200"
+          <span
+            class="flex items-center px-3 py-2 rounded-md hover:bg-green-rural transition-colors duration-200 hover:cursor-pointer"
           >
             <svg
               class="w-6 h-6 mr-3"
@@ -68,14 +68,14 @@
               ></path>
             </svg>
             Statistiques
-          </a>
+          </span>
         </li>
       </ul>
     </nav>
     <div class="mt-auto">
       <button
         @click.prevent="logout"
-        class="flex items-center px-3 py-2 rounded-md hover:bg-green-700 transition-colors duration-200"
+        class="flex items-center px-3 py-2 rounded-md hover:bg-green-rural transition-colors duration-200 hover:cursor-pointer"
       >
         <svg
           class="w-6 h-6 mr-3"
