@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const http = require('http')
-const app = require('./app')
+import { createServer } from 'http'
+import app from './app.js'
 
 const normalizePort = (val) => {
   const port = parseInt(val, 10)
@@ -26,17 +25,15 @@ const errorHandler = (error) => {
     case 'EACCES':
       console.error(bind + ' requires elevated privileges.')
       process.exit(1)
-      break
     case 'EADDRINUSE':
       console.error(bind + ' is already in use.')
       process.exit(1)
-      break
     default:
       throw error
   }
 }
 
-const server = http.createServer(app)
+const server = createServer(app)
 
 server.on('error', errorHandler)
 server.on('listening', () => {
