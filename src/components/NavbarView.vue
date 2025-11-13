@@ -24,6 +24,7 @@ const links = ref([
       v-motion
       :initial="{ opacity: 0, y: 100 }"
       :visible="{ opacity: 1, y: 0 }"
+      :delay="500"
     >
       <div class="flex items-center">
         <div class="w-20">
