@@ -1,14 +1,11 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-const dotenv = require('dotenv')
-dotenv.config()
-const Admin = require('../models/Admin')
+import { config } from 'dotenv'
+import Admin from '../models/Admin.js'
+import jwt from 'jsonwebtoken'
 
-const jwt = require('jsonwebtoken')
-
+config()
 const JWT_SECRET = process.env.JWT_CODE
-// const { ValidationError } = require('sequelize')
 
-async function login(req, res) {
+export async function login(req, res) {
   const { password, nom } = req.body
   try {
     const admin = await Admin.findOne({ where: { nom } })
@@ -32,4 +29,4 @@ async function login(req, res) {
     return res.status(500).json({ message: 'Internal server error' })
   }
 }
-module.exports = { login }
+// No default export; using named export "login"
