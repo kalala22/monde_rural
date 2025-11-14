@@ -165,7 +165,7 @@ const submitForm = async () => {
               >
                 <option value="" disabled selected>Choisissez un type</option>
                 <option value="membre">Membre</option>
-                <option value="bénévole">Bénévole</option>
+                <option value="benevole">Bénévole</option>
                 <option value="partenaire">Partenaire</option>
               </select>
             </div>

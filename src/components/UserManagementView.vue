@@ -68,7 +68,7 @@
             <td class="px-6 py-4">
               {{ formatMessage(user.message) }}
             </td>
-            <td class="px-6 py-4">{{ format(new Date(user.createdAt), 'dd/MM/yyyy') }}</td>
+            <td class="px-6 py-4">{{ format(new Date(user.date_adhesion), 'dd/MM/yyyy') }}</td>
           </tr>
         </tbody>
       </table>
@@ -103,7 +103,7 @@ interface DataUser {
   email: string
   type_adhesion: string
   message: string
-  createdAt: string
+  date_adhesion: string
 }
 
 // 2. Accepter la prop "users" venant du parent
