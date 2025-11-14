@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model admin {
+  id       Int     @id @default(autoincrement())
+  nom      String? @db.VarChar(255)
+  password String  @db.VarChar(255)
+  users    users[]
+}
+
+model users {
+  id            Int                 @id @default(autoincrement())
+  nom           String              @db.VarChar(255)
+  postnom       String              @db.VarChar(255)
+  prenom        String              @db.VarChar(255)
+  email         String              @unique(map: "email") @db.VarChar(255)
+  type_adhesion users_type_adhesion
+  message       String?             @db.Text
+  date_adhesion DateTime?           @db.DateTime(0)
+  admin_id      Int?
+  updatedAt     DateTime            @updatedAt @db.DateTime(0)
+  admin         admin?              @relation(fields: [admin_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "users_ibfk_1")
+
+  @@index([admin_id], map: "admin_id")
+}
+
+enum users_type_adhesion {
+  membre
+  partenaire
+  benevole
+}
