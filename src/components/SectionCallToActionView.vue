@@ -1,6 +1,13 @@
 <script setup lang="ts"></script>
 <template>
-  <section class="py-20" v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0 }">
+  <section
+    class="py-20"
+    v-motion
+    :initial="{ opacity: 0, y: 100 }"
+    :visible="{ opacity: 1, y: 0 }"
+    :delay="500"
+    :duration="400"
+  >
     <div class="container mx-auto px-4">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="font-black text-3xl md:text-4xl font-roboto mb-6 text-balance">
@@ -11,17 +18,29 @@
           rurales.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <button>
+          <button
+            v-motion
+            :initial="{ opacity: 0, y: 100 }"
+            :visible="{ opacity: 1, y: 0 }"
+            :delay="500"
+            :duration="500"
+          >
             <a
-              href="#"
+              href="#/join-us"
               class="bg-vertrural shadow-sm flex items-center justify-center transition duration-600 ease-in-out gap-1 font-bold text-lg px-6 py-3 rounded-lg hover:scale-105 text-white font-roboto"
             >
               Devenir membre
             </a>
           </button>
-          <button>
+          <button
+            v-motion
+            :initial="{ opacity: 0, y: 100 }"
+            :visible="{ opacity: 1, y: 0 }"
+            :delay="600"
+            :duration="500"
+          >
             <a
-              href="#"
+              href="#/contact"
               class="shadow-sm flex items-center justify-center transition duration-600 ease-in-out gap-1 hover:bg-green-rural text-black hover:text-white font-bold text-lg px-6 py-3 rounded-lg font-roboto"
             >
               Nous contacter

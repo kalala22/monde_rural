@@ -38,7 +38,14 @@ const listIntervation = ref([
   <section>
     <div class="md:max-w-7xl mx-auto px-4">
       <!-- 3. text-center : Centre le texte à l'intérieur de ce div. -->
-      <div class="text-center mb-16 mt-10" v-motion-slide-visible-once-left>
+      <div
+        class="text-center mb-16 mt-10"
+        v-motion
+        :initial="{ opacity: 0, y: 100 }"
+        :visible="{ opacity: 1, y: 0 }"
+        :delay="500"
+        :duration="800"
+      >
         <h2 class="font-black text-3xl md:text-5xl mb-4 text-vertrural font-roboto">
           Nos Axes d'Intervention
         </h2>

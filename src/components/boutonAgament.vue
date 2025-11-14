@@ -5,7 +5,7 @@ interface Link {
   icon?: string
 }
 import { ref } from 'vue'
-const links = ref<Link[]>([{ name: "Je m'engage", href: '#', icon: 'arrow-right' }])
+const links = ref<Link[]>([{ name: "Je m'engage", href: '#/join-us', icon: 'arrow-right' }])
 </script>
 <template>
   <a

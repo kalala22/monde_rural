@@ -4,7 +4,7 @@ interface Link {
   href: string
 }
 import { ref } from 'vue'
-const links = ref<Link[]>([{ name: 'Rejoignez-nous', href: '#' }])
+const links = ref<Link[]>([{ name: 'Rejoignez-nous', href: '#/join-us' }])
 </script>
 <template>
   <a

@@ -12,7 +12,7 @@ const links = ref([
   { name: 'Accueil', href: '/' },
   { name: 'A propos', href: '/about' },
   { name: 'Actualités', href: '/news' },
-  { name: 'Rejoignez-nous', href: '/join' },
+  { name: 'Rejoignez-nous', href: '/join-us' },
   { name: 'Contact', href: '/contact' },
 ])
 </script>
@@ -24,6 +24,8 @@ const links = ref([
       v-motion
       :initial="{ opacity: 0, y: 100 }"
       :visible="{ opacity: 1, y: 0 }"
+      :delay="500"
+      :duration="400"
     >
       <div class="flex items-center">
         <div class="w-20">

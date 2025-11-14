@@ -8,6 +8,8 @@
             v-motion
             :initial="{ opacity: 0, y: 100 }"
             :visible="{ opacity: 1, y: 0 }"
+            :delay="500"
+            :duration="400"
           >
             <div class="flex items-center gap-2 mb-4">
               <div class="w-20">
@@ -58,7 +60,13 @@
             </ul>
           </div>
 
-          <div v-motion :initial="{ opacity: 0, y: 100 }" :visible="{ opacity: 1, y: 0 }">
+          <div
+            v-motion
+            :initial="{ opacity: 0, y: 100 }"
+            :visible="{ opacity: 1, y: 0 }"
+            :delay="500"
+            :duration="400"
+          >
             <h3 class="font-bold text-lg mb-4">Contact</h3>
             <ul class="space-y-3">
               <li class="flex items-start gap-2 text-sm text-white/80">
@@ -195,7 +203,14 @@
           </div>
         </div>
 
-        <div class="border-t border-white/10 mt-8 pt-8 text-center text-sm text-white/60">
+        <div
+          class="border-t border-white/10 mt-8 pt-8 text-center text-sm text-white/60"
+          v-motion
+          :initial="{ opacity: 0, y: 100 }"
+          :visible="{ opacity: 1, y: 0 }"
+          :delay="500"
+          :duration="400"
+        >
           <p>&copy; LE MONDE RURAL. Tous droits réservés.</p>
         </div>
       </div>
