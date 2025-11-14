@@ -1,26 +1,32 @@
-import Users from '../models/Users.js'
-import { ValidationError } from 'sequelize'
+import prisma from '../prisma/client.js'
+// import { ValidationError } from 'sequelize'
 
 export async function postCreateForm(req, res) {
+  console.log('--- REQUÊTE REÇUE DANS postCreateForm ---', req.body)
   const idAdminParDefaut = process.env.DEFAULT_ADMIN_ID
+    ? parseInt(process.env.DEFAULT_ADMIN_ID)
+    : null
 
   try {
     const { nom, postnom, prenom, email, membershipType, message } = req.body
 
     // Vérifier si un utilisateur non vérifié existe déjà avec cet email
-    const existingUser = await Users.findOne({ where: { email } })
+    const existingUser = await prisma.users.findUnique({ where: { email } })
     if (existingUser) {
       return res.status(409).json({ message: 'Cette adresse email est déjà utilisée.' })
     }
 
-    const newUser = await Users.create({
-      nom,
-      postnom,
-      prenom,
-      email,
-      type_adhesion: membershipType,
-      message,
-      admin_id: idAdminParDefaut,
+    const newUser = await prisma.users.create({
+      data: {
+        nom: nom.trim().charAt(0).toUpperCase() + nom.trim().slice(1),
+        postnom: postnom.trim().charAt(0).toUpperCase() + postnom.trim().slice(1),
+        prenom: prenom.trim().charAt(0).toUpperCase() + prenom.trim().slice(1),
+        email: email.trim(),
+        type_adhesion: membershipType,
+        message: message.trim(),
+        date_adhesion: new Date(),
+        admin_id: idAdminParDefaut,
+      },
     })
 
     return res.status(201).json({
@@ -31,13 +37,13 @@ export async function postCreateForm(req, res) {
     console.error("Erreur lors de la création de l'utilisateur:", error)
 
     // Si l'erreur est une erreur de validation de Sequelize (ex: email invalide, champ manquant)
-    if (error instanceof ValidationError) {
-      return res.status(400).json({
-        message: 'Les données fournies sont invalides.',
-        // Renvoie les détails spécifiques de l'erreur de validation
-        errors: error.errors.map((e) => ({ field: e.path, message: e.message })),
-      })
-    }
+    // if (error instanceof ValidationError) {
+    //   return res.status(400).json({
+    //     message: 'Les données fournies sont invalides.',
+    //     // Renvoie les détails spécifiques de l'erreur de validation
+    //     errors: error.errors.map((e) => ({ field: e.path, message: e.message })),
+    //   })
+    // }
 
     // Pour toutes les autres erreurs (ex: problème de connexion à la DB)
     return res.status(500).json({
