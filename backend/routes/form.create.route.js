@@ -16,7 +16,7 @@ const validationRules = [
 
   // Le type d'adhésion doit être l'une des valeurs autorisées
   body('membershipType')
-    .isIn(['membre', 'partenaire', 'bénévole'])
+    .isIn(['membre', 'partenaire', 'benevole'])
     .withMessage("Le type d'adhésion est invalide."),
 ]
 const handleValidationErrors = (req, res, next) => {
