@@ -1,6 +1,6 @@
 import { config } from 'dotenv'
-import Admin from '../models/Admin.js'
 import jwt from 'jsonwebtoken'
+import prisma from '../prisma/client.js'
 
 config()
 const JWT_SECRET = process.env.JWT_CODE
@@ -8,7 +8,7 @@ const JWT_SECRET = process.env.JWT_CODE
 export async function login(req, res) {
   const { password, nom } = req.body
   try {
-    const admin = await Admin.findOne({ where: { nom } })
+    const admin = await prisma.admin.findFirst({ where: { nom } })
     if (!admin) {
       return res.status(404).json({ message: 'Admin not found' })
     }
