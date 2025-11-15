@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
-    "postinstall": "prisma generate"
+    "start": "prisma generate && node server.js"
   },
   "keywords": [],
   "author": "",
