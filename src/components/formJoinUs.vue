@@ -21,7 +21,7 @@ const submitForm = async () => {
   errorMessage.value = ''
 
   try {
-    const response = await fetch('http://localhost:3000/api/send-form', {
+    const response = await fetch('https://monde-rural.onrender.com/api/send-form', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

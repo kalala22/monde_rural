@@ -31,7 +31,7 @@ const dataUser = ref<DataUser[]>([])
 // 4. TOUTE LA LOGIQUE DE FETCH EST DÉPLACÉE ICI, DANS LE PARENT
 onMounted(async () => {
   try {
-    const response = await fetch('http://localhost:3000/api/resources')
+    const response = await fetch('https://monde-rural.onrender.com/api/resources')
     if (response.ok) {
       const data = await response.json()
       dataUser.value = data
