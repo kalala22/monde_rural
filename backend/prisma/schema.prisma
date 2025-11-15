@@ -4,7 +4,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -23,9 +23,9 @@ model users {
   email         String              @unique(map: "email") @db.VarChar(255)
   type_adhesion users_type_adhesion
   message       String?             @db.Text
-  date_adhesion DateTime?           @db.DateTime(0)
+  date_adhesion DateTime?           @db.Timestamp(0)
   admin_id      Int?
-  updatedAt     DateTime            @updatedAt @db.DateTime(0)
+  updatedAt     DateTime            @updatedAt @db.Timestamp(0)
   admin         admin?              @relation(fields: [admin_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "users_ibfk_1")
 
   @@index([admin_id], map: "admin_id")
