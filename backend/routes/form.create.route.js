@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { body } from 'express-validator'
+import { body, validationResult } from 'express-validator'
 import { postCreateForm } from '../controllers/post.form.js'
 const router = Router()
 
@@ -19,15 +19,15 @@ const validationRules = [
     .isIn(['membre', 'partenaire', 'benevole'])
     .withMessage("Le type d'adhésion est invalide."),
 ]
-// const handleValidationErrors = (req, res, next) => {
-//   const errors = validationResult(req)
-//   if (!errors.isEmpty()) {
-//     // S'il y a des erreurs, renvoyer une réponse 400 avec les détails
-//     return res.status(400).json({ errors: errors.array() })
-//   }
-//   // S'il n'y a pas d'erreurs, passer au contrôleur suivant
-//   next()
-// }
+const handleValidationErrors = (req, res, next) => {
+  const errors = validationResult(req)
+  if (!errors.isEmpty()) {
+    // S'il y a des erreurs, renvoyer une réponse 400 avec les détails
+    return res.status(400).json({ errors: errors.array() })
+  }
+  // S'il n'y a pas d'erreurs, passer au contrôleur suivant
+  next()
+}
 router.post('/send-form', validationRules, handleValidationErrors, postCreateForm)
 
 export default router
