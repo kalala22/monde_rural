@@ -94,7 +94,7 @@ const login = async () => {
   errorMessage.value = ''
   successMessage.value = ''
   try {
-    const response = await fetch('http://localhost:3000/api/handle-login', {
+    const response = await fetch('https://monde-rural.onrender.com/api/handle-login', {
       method: 'POST', // Changé de 'GET' à 'POST'
       headers: {
         'Content-Type': 'application/json',
