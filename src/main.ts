@@ -42,6 +42,7 @@ import {
   faCheckCircle,
   faHandshake,
   faCircleNotch,
+  faCalendar,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -83,6 +84,8 @@ library.add(
   faCheckCircle,
   faHandshake,
   faCircleNotch,
+  faCalendar,
+  faUsers,
 )
 import router from '@/router'
 
