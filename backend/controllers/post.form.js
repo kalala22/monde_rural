@@ -8,7 +8,7 @@ export async function postCreateForm(req, res) {
     : null
 
   try {
-    const { nom, postnom, prenom, email, membershipType, message } = req.body
+    const { nom, postnom, prenom, email, membershipType, message, telephone } = req.body
 
     // Vérifier si un utilisateur non vérifié existe déjà avec cet email
     const existingUser = await prisma.users.findUnique({ where: { email } })
@@ -22,6 +22,7 @@ export async function postCreateForm(req, res) {
         postnom: postnom.trim().charAt(0).toUpperCase() + postnom.trim().slice(1),
         prenom: prenom.trim().charAt(0).toUpperCase() + prenom.trim().slice(1),
         email: email.trim(),
+        telephone: telephone.trim(),
         type_adhesion: membershipType,
         message: message.trim(),
         date_adhesion: new Date(),
