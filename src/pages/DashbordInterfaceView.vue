@@ -20,9 +20,11 @@ interface DataUser {
   postnom: string
   prenom: string
   email: string
+  telephone: string
   type_adhesion: string
   message: string
   createdAt: string
+  date_adhesion: string
 }
 
 const isLoading = ref(true)
