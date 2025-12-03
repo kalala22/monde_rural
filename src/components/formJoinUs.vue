@@ -1,5 +1,14 @@
 <script lang="ts" setup>
 import { ref } from 'vue'
+const GOOGLE_SCRIPT_URL_ENV = import.meta.env.VITE_GOOGLE_SCRIPT_URL as string
+
+// Petite sécurité : vérifier dans la console si l'URL est bien chargée
+if (!GOOGLE_SCRIPT_URL_ENV) {
+  console.error("ERREUR CRITIQUE : L'URL de l'API Google est manquante dans le fichier .env")
+}
+
+// VOTRE URL GOOGLE SCRIPT ICI (celle qui finit par /exec)
+const GOOGLE_SCRIPT_URL = GOOGLE_SCRIPT_URL_ENV
 
 const form = ref({
   nom: '',
@@ -22,44 +31,46 @@ const submitForm = async () => {
   errorMessage.value = ''
 
   try {
-    const response = await fetch('https://monde-rural.onrender.com/api/send-form', {
+    // 1. Conversion des données en FormData (Format compatible Google Script)
+    const formData = new FormData()
+    formData.append('nom', form.value.nom)
+    formData.append('postnom', form.value.postnom)
+    formData.append('prenom', form.value.prenom)
+    formData.append('telephone', form.value.telephone)
+    formData.append('email', form.value.email)
+    formData.append('membershipType', form.value.membershipType)
+    formData.append('message', form.value.message)
+
+    // 2. Envoi via fetch
+    // Note: On ne met PAS de header 'Content-Type': 'application/json'
+    const response = await fetch(GOOGLE_SCRIPT_URL, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(form.value),
+      body: formData,
     })
 
     // ÉTAPE CLÉ : Lire le corps de la réponse JSON, que ce soit un succès ou une erreur
     const responseData = await response.json()
 
-    // Si la requête a échoué (status 4xx ou 5xx)
-    if (!response.ok) {
-      // L'erreur vient du serveur, on utilise son message
-      // responseData.message correspond à ce que vous envoyez depuis Express
-      // Ex: "Cette adresse email est déjà utilisée."
-      errorMessage.value = responseData.message || 'Une erreur inconnue est survenue.'
-      throw new Error(responseData.message || 'Server error')
-    }
+    if (responseData.result === 'success') {
+      successMessage.value = responseData.message // "Inscription réussie !"
 
-    // Si la requête a réussi (status 201)
-    successMessage.value = responseData.message // Ex: "Formulaire envoyé avec succès !"
-    // Vider le formulaire
-    form.value = {
-      nom: '',
-      postnom: '',
-      prenom: '',
-      telephone: '',
-      email: '',
-      membershipType: '',
-      message: '',
+      // Réinitialiser le formulaire
+      form.value = {
+        nom: '',
+        postnom: '',
+        prenom: '',
+        telephone: '',
+        email: '',
+        membershipType: '',
+        message: '',
+      }
+    } else {
+      // C'est ici qu'on attrape le message "Email déjà utilisé"
+      throw new Error(responseData.message || 'Une erreur est survenue.')
     }
-  } catch (e) {
-    // Cette partie 'catch' n'attrapera que les erreurs réseau
-    // (serveur injoignable, pas de connexion internet, etc.)
-    // Si errorMessage n'a pas déjà été défini par la réponse du serveur
+  } catch (e: unknown) {
     if (!errorMessage.value) {
-      errorMessage.value = 'Impossible de joindre le serveur. Veuillez vérifier votre connexion.'
+      errorMessage.value = e as string
     }
     console.error('Form submission error:', e)
   } finally {
