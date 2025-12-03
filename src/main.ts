@@ -43,6 +43,9 @@ import {
   faHandshake,
   faCircleNotch,
   faCalendar,
+  faPhone,
+  faLocationDot,
+  faPaperPlane,
 } from '@fortawesome/free-solid-svg-icons'
 import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons'
 
@@ -86,6 +89,9 @@ library.add(
   faCircleNotch,
   faCalendar,
   faUsers,
+  faPhone,
+  faLocationDot,
+  faPaperPlane,
 )
 import router from '@/router'
 

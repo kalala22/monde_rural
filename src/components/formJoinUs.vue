@@ -5,6 +5,7 @@ const form = ref({
   nom: '',
   postnom: '',
   prenom: '',
+  telephone: '',
   email: '',
   membershipType: '',
   message: '',
@@ -48,6 +49,7 @@ const submitForm = async () => {
       nom: '',
       postnom: '',
       prenom: '',
+      telephone: '',
       email: '',
       membershipType: '',
       message: '',
@@ -136,6 +138,19 @@ const submitForm = async () => {
                   v-model="form.prenom"
                   class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
                   placeholder="Ex: Jane"
+                  required
+                />
+              </div>
+              <div>
+                <label for="telephone" class="block text-sm font-medium text-gray-700 font-roboto"
+                  >Telephone</label
+                >
+                <input
+                  type="text"
+                  id="telephone"
+                  v-model="form.telephone"
+                  class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2 focus:ring-vertrural focus:border-vertrural font-roboto"
+                  placeholder="Votre numero de telephone"
                   required
                 />
               </div>
