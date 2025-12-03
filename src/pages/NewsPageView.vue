@@ -98,7 +98,7 @@ const ListProjets: Ref<
     type: 'Projet Éducatif',
     title: 'RDC 2050 et Jeunesse Rurale',
     icon: 'users',
-    imageUrl: '@/assets/img/imageForum2.jpg',
+    imageUrl: '../assets/img/imageForum2.jpg',
     date: '2025-06-25',
     expanded: false,
     description:
@@ -109,7 +109,7 @@ const ListProjets: Ref<
     type: 'Forum',
     title: 'Conférence Nationale sur l’Exode Rural',
     icon: 'users',
-    imageUrl: '@/assets/img/imageForum2.jpg',
+    imageUrl: '../assets/img/imageForum2.jpg',
     date: '2025-11-04',
     expanded: false,
     description:
