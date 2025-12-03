@@ -9,3 +9,4 @@ export async function getAllResources(req, res) {
     res.status(500).json({ error: 'Failed to fetch resources' })
   }
 }
+
