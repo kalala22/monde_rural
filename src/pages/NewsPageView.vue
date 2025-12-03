@@ -81,6 +81,7 @@
 <script lang="ts" setup>
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { ref, type Ref } from 'vue'
+import imageForum2 from '@/assets/img/imageForum2.jpg'
 const ListProjets: Ref<
   Array<{
     statut: string
@@ -98,7 +99,7 @@ const ListProjets: Ref<
     type: 'Projet Éducatif',
     title: 'RDC 2050 et Jeunesse Rurale',
     icon: 'users',
-    imageUrl: 'src/assets/img/imageForum2.jpg',
+    imageUrl: imageForum2,
     date: '2025-06-25',
     expanded: false,
     description:
@@ -109,7 +110,7 @@ const ListProjets: Ref<
     type: 'Forum',
     title: 'Conférence Nationale sur l’Exode Rural',
     icon: 'users',
-    imageUrl: 'src/assets/img/imageForum2.jpg',
+    imageUrl: imageForum2,
     date: '2025-11-04',
     expanded: false,
     description:
