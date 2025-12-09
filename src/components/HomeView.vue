@@ -34,7 +34,8 @@ import BoutonSeeMore from './boutonSeeMore.vue'
             :delay="300"
             :duration="800"
           >
-            Souvenez-vous de ces mots puissants tirés de notre hymne national
+            Puisque plus de <span class="">70%</span> de la population congolaise vit en milieu
+            rural
           </h1>
         </div>
         <blockquote
@@ -45,10 +46,10 @@ import BoutonSeeMore from './boutonSeeMore.vue'
           :delay="300"
           :duration="800"
         >
-          « Nous peuplerons ton sol et nous assurerons ta grandeur. »
+          ensemble, agissons pour promouvoir un développement rural durable et inclusif
         </blockquote>
 
-        <p
+        <!-- <p
           class="text-lg md:text-xl text-muted-foreground mb-10 text-balance text-white"
           v-motion
           :initial="{ opacity: 0, y: 100 }"
@@ -57,7 +58,7 @@ import BoutonSeeMore from './boutonSeeMore.vue'
           :duration="800"
         >
           Car la grandeur d'un pays se mesure à sa capacité à se développer de manière équitable.
-        </p>
+        </p> -->
         <div
           class="flex flex-col md:flex-row gap-4 justify-center"
           v-motion
